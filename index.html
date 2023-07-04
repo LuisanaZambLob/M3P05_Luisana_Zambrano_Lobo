@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del restaurante</title>
+</head>
+<body>
+    <h1>Menú del restaurante</h1>
+<!--En el documento HTML crearemos una lista que será el Menú de un restaurante, con 5 platos de primero y 5 platos de
+segundo.-->
+<h2>Primeros platos</h2>
+<ol id="primeros">
+    <li>Ensalada Verde</li>
+    <li>Nachos con Pollo y Tocino</li>
+    <li>Croquetas de Pollo</li>
+    <li>Croquetas de Jamon</li>
+    <li>Empanadillas de Jamon y Queso</li>
+</ol>
+
+<h2>Segundos platos</h2>
+<ol id="segundos">
+    <li>Macarrones tres quesos</li>
+    <li>Pollo al Horno</li>
+    <li>Bistec a la Parrilla</li>
+    <li>Pescado a la Plancha</li>
+    <li>Lasagna de Carne</li>
+</ol>
+<!--Debajo de la lista crearemos un botón que indique “Elegir Menú”-->
+<button id="elegir-btn">Elegir Menú</button>
+
+<script>
+    function obtenerPlato(lista, numero) {
+    var platos = lista.getElementsByTagName("li");
+    return platos[numero - 1].innerHTML;
+    }
+    
+    // Función que se ejecuta cuando se pulsa el botón
+    function elegirMenu() {
+    var primeros = document.getElementById("primeros");
+    var segundos = document.getElementById("segundos");
+
+    //Al pulsar el botón se le pedirá al usuario (prompt) que indique el número del primer plato y un segundo mensaje para indicar el número del segundo plato.
+    var primerPlato = parseInt(prompt("Ingrese el número del primer plato:"));
+    var segundoPlato = parseInt(prompt("Ingrese el número del segundo plato:"));
+    
+    var primerDescripcion = obtenerPlato(primeros, primerPlato);
+    var segundoDescripcion = obtenerPlato(segundos, segundoPlato); 
+    
+    //Crearemos un programe que se encargue de realizar la conversión del número a la descripción del plato.
+    var mensaje = "Ha elegido de primer plato " + primerDescripcion + " y de segundo plato " + segundoDescripcion;
+    
+    //Mostrar con un alert a que plato corresponden las opciones elegidas con un mensaje similar a este: “Ha elegido de primer plato Ensalada Mixta y de segundo plato Macarrones al Pesto”.
+    alert(mensaje);
+    }
+    // Asociar la función elegirMenu al evento click del botón
+    var btn = document.getElementById("elegir-btn");
+    btn.addEventListener("click", elegirMenu);
+</script>
+</body>
+</html>
